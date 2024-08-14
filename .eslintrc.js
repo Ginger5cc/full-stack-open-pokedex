@@ -1,9 +1,14 @@
 module.exports = {
+  'globals': {
+    'window': true,
+    'module': true
+  },
   'env': {
     'browser': true,
     'es6': true,
     'jest/globals': true,
-    'node': true
+    'node': true,
+    'amd': true
   },
   'settings': {
     'react': {
@@ -56,4 +61,3 @@ module.exports = {
     'react/jsx-uses-vars': 'error'
   }
 }
-  
