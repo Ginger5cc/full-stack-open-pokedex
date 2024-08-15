@@ -51,13 +51,15 @@ jobs:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
+    env:
+      CONDITION: ${{ !contains(join(github.event.commits.*.message, ' '), '#skip') }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: '0'
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' }}
-        uses: anothrNick/github-tag-action@1.64.0
+        if: ${{ github.event_name == 'push' && env.CONDITION == 'true'}}
+        uses: anothrNick/github-tag-action@8c8163ef62cf9c4677c8e800f36270af27930f42
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
