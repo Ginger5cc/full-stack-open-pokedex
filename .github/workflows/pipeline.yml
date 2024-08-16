@@ -51,7 +51,6 @@ jobs:
         with:
           severity: info
           username: Gingerginger5cc
-          description: to https://full-stack-open-pokedex-autumn-voice-4784.fly.dev/ by ginger
           details: A New Version of Pokedex deployed!!!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
       - name: Discord Notice - Test failure
