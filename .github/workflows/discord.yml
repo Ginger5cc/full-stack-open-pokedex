@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Discord Notification
-        uses: th0th/notify-discord@v0.4.1
+        uses: hunghg255/action-notifications@master
         with:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
-          GITHUB_JOB_NAME: "A new version of Pokedex deployed by ginger"
-          GITHUB_JOB_STATUS: ${{ github.event.head_commit.message }}
+          discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title:  "A new version of Pokedex deployed by ginger"
+          description: ${{ github.event.head_commit.message }}
