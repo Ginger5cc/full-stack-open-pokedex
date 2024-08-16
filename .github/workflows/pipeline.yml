@@ -47,23 +47,10 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           
       - name: Discord Notice - Test success
-        uses: rjstone/discord-webhook-notify@v1
-        
+        uses: fateyan/action-discord-notifier@v1
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
-          severity: info
-          username: Ginger
-          details: A New Version of Pokedex deployed!!! by ginger
-          
-      - name: Discord Notice - Test failure
-        uses: rjstone/discord-webhook-notify@v1
-        if: ${{ failure() }}
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
-          severity: error
-          username: Ginger
-          description: commit by ginger broke the build 
-          details: Complete failure!!!
+          message-title: New Commits Pushed
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
           
           
 
