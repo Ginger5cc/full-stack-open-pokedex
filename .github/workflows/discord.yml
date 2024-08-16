@@ -21,7 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Discord Notification
-        uses: tsickert/discord-webhook@v5.3.0
+        uses: th0th/notify-discord@v0.4.1
         with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          raw-data: hi.json
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+          GITHUB_JOB_NAME: "A new version of Pokedex deployed by ginger"
+          GITHUB_JOB_STATUS: ${{ github.event.head_commit.message }}
