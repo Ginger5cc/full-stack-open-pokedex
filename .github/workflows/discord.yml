@@ -1,0 +1,32 @@
+name: Testing Discord Notification
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+
+jobs:
+  simple_deployment_pipeline:
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Test Custom
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+            severity: info
+            username: Ginger
+            color: '#ff00aa'
+            description: Successfully posted.
+            details: 'succeed'
+            footer: by ginger.
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
