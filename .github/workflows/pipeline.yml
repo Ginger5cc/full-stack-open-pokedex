@@ -46,16 +46,17 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       - name: Discord Notice - Test success
-        uses: Zmicier14/discord-webhook@v1.0.6
         if: ${{ success() }}
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
         with:
           severity: info
           username: Ginger
           details: A New Version of Pokedex deployed!!! by ginger
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
       - name: Discord Notice - Test failure
-        uses: Zmicier14/discord-webhook@v1.0.6
         if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+
         with:
           severity: error
           username: Ginger
