@@ -45,6 +45,25 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - name: Discord Notice - Test success
+        uses: rjstone/discord-webhook-notify@v1.0.0
+        if: ${{ success() }}
+        with:
+          severity: info
+          username: Gingerginger5cc
+          description: to https://full-stack-open-pokedex-autumn-voice-4784.fly.dev/ by ginger
+          details: A New Version of Pokedex deployed!!!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
+      - name: Discord Notice - Test failure
+        uses: rjstone/discord-webhook-notify@v1.0.0
+        if: ${{ failure() }}
+        with:
+          severity: info
+          username: Gingerginger5cc
+          description: commit by ginger broke the build
+          details: Complete failure!!!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
+          
 
   tag_release:
     needs: [simple_deployment_pipeline]
@@ -63,3 +82,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
+    
