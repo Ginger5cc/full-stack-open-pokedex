@@ -47,6 +47,21 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           
+      - name: Discord Notification (Succeed)
+        if: ${{ success() }}
+        uses: hunghg255/action-notifications@master
+        with:
+          discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title:  "A new version of Pokedex deployed by ginger"
+          description: ${{ github.event.head_commit.message }}
+      - name: Discord Notification (Failure)
+        if: ${{ failure() }}
+        uses: hunghg255/action-notifications@master
+        with:
+          discord_webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title:  "Build Broken by ginger"
+          description: ${{ github.event.head_commit.message }}
+          
           
 
   tag_release:
