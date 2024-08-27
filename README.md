@@ -1,15 +1,14 @@
-# Full Stack open CI/CD
+# Full Stack Open Part 11 - CI/CD
 
-This repository is used for the CI/CD module of the Full stack open course
+Learning from Full stack open part 11 and working on all the exercises
+https://fullstackopen.com/en/part11
 
-Fork the repository to complete course exercises
+This part is for the exercises of ex11.1-11.19
+Build a CI/CD pipeline for the app Pokedex
 
-## Commands
+- Develop tests for the app
+- Develop CI-CD pipelines using Github actions
 
-Start by running `npm install` inside the project folder
 
-`npm start` to run the webpack dev server
-`npm test` to run tests
-`npm run eslint` to run eslint
-`npm run build` to make a production build
-`npm run start-prod` to run your production build
+For ex11.20-11.21, all the exercises were in the following repo.
+https://github.com/Ginger5cc/full-stack-open-part11-phoneapp/
